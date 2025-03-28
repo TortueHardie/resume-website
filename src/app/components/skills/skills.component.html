@@ -1,0 +1,21 @@
+<section class="skills-section">
+  <h2 class="section-title">Skills</h2>
+  
+  <div class="skills-container">
+    @for (skillCategory of resumeData?.skills || []; track skillCategory.name) {
+      <div class="skill-category">
+        <h3 class="category-title">{{ skillCategory.name }}</h3>
+        
+        @if (skillCategory.keywords && skillCategory.keywords.length > 0) {
+          <div class="skills-list">
+            @for (skill of skillCategory.keywords; track skill) {
+              <div class="skill-item">
+                <span class="skill-name">{{ skill }}</span>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+</section>

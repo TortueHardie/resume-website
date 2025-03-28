@@ -1,0 +1,44 @@
+<header class="header" [class.scrolled]="isScrolled">
+  <div class="container">
+    <div class="logo">
+      <a routerLink="/about" class="logo-link">{{ resumeData?.basics?.name || 'Colin LIENARD' }}</a>
+      <div class="interest-badge">
+        <span class="material-symbols-outlined">saved_search</span>
+        <span class="interest-text">Web Development</span>
+      </div>
+    </div>
+
+    <nav class="nav-desktop">
+      <ul class="nav-list">
+        <li *ngFor="let item of navItems" class="nav-item">
+          <a 
+            [routerLink]="item.path" 
+            routerLinkActive="active" 
+            class="nav-link hover-effect"
+            (mouseenter)="onNavHover(item.label)">
+            {{ item.label }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
+      <span [class.open]="isMobileMenuOpen"></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" [class.open]="isMobileMenuOpen">
+    <ul class="mobile-nav-list">
+      <li *ngFor="let item of navItems; let i = index" 
+          class="mobile-nav-item"
+          [style.animation-delay]="i * 0.05 + 's'">
+        <a [routerLink]="item.path" 
+           routerLinkActive="active" 
+           class="mobile-nav-link"
+           (click)="closeMobileMenu()">
+          {{ item.label }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>

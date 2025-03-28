@@ -1,0 +1,137 @@
+<section class="projects-section">
+  <h2 class="section-title">Projects & Portfolio</h2>
+  
+  <div class="projects-container">
+    <!-- Personal Projects -->
+    <div class="projects-category">
+      <h3 class="category-title">Personal Projects</h3>
+      <p class="section-intro">I'm passionate about coding and constantly working on side projects to improve my skills and explore new technologies.</p>
+      
+      <div class="github-profile">
+        <div class="github-card">
+          <div class="github-header">
+            <div class="github-logo">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+              </svg>
+            </div>
+            <div class="github-info">
+              <h4>Check out my GitHub</h4>
+              <p>Explore my repositories and contributions</p>
+            </div>
+          </div>
+          <div class="github-content">
+            <p>My GitHub profile showcases various personal projects including web applications, utilities, and coding experiments. Feel free to browse through my repositories to see my coding style and the technologies I work with.</p>
+            <div class="tech-stack">
+              <span class="technology-badge">JavaScript</span>
+              <span class="technology-badge">TypeScript</span>
+              <span class="technology-badge">Angular</span>
+              <span class="technology-badge">React</span>
+              <span class="technology-badge">Node.js</span>
+              <span class="technology-badge">CSS/SCSS</span>
+            </div>
+          </div>
+          <div class="github-footer">
+            <a [href]="githubProfileUrl" target="_blank" rel="noopener" class="github-link">
+              <span>Visit My GitHub</span>
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"></path>
+                <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Photography Portfolio -->
+    <div class="projects-category">
+      <h3 class="category-title">Photography Portfolio</h3>
+      <p class="section-intro">As a passionate photographer, I capture moments that tell stories through my lens. Below is a selection of my work across different genres.</p>
+      
+      <div class="category-filter">
+        <button 
+          *ngFor="let category of categories" 
+          class="filter-btn" 
+          [class.active]="activeCategory === category"
+          (click)="filterByCategory(category)">
+          {{ category }}
+        </button>
+      </div>
+      
+      <div class="gallery-container">
+        <div class="gallery masonry-gallery">
+          @for (photo of filteredPhotos; track photo.id) {
+            <div class="gallery-item" (click)="openPhotoModal(photo)">
+              <img [src]="photo.thumbnailUrl" [alt]="photo.category" class="gallery-img">
+              <div class="gallery-overlay">
+                <div class="overlay-content">
+                  <span class="gallery-category">{{ photo.category }}</span>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+      
+      <!-- Photo Modal with loading indicator -->
+      @if (selectedPhoto) {
+        <div class="photo-modal" [class.open]="isModalOpen">
+          <div class="modal-background" (click)="closePhotoModal()"></div>
+          
+          <div class="modal-content">
+            <button class="close-button" (click)="closePhotoModal()">&times;</button>
+            
+            <!-- Loading indicator -->
+            @if (imageLoading) {
+              <div class="loading-spinner">
+                <div class="spinner"></div>
+              </div>
+            }
+            
+            <div class="img-container">
+              <img [src]="selectedPhoto.url" 
+                   [alt]="selectedPhoto.category" 
+                   class="modal-img"
+                   [class.hidden]="imageLoading"
+                   (load)="imageLoading = false"
+                   (error)="imageLoading = false">
+            </div>
+            
+            <div class="modal-caption">
+              <span class="modal-category">{{ selectedPhoto.category }}</span>
+            </div>
+          </div>
+          
+          <div class="modal-navigation">
+            <button class="nav-button prev" (click)="prevPhoto()">❮</button>
+            <button class="nav-button next" (click)="nextPhoto()">❯</button>
+          </div>
+        </div>
+      }
+    </div>
+    
+    <!-- Gaming Interests -->
+    <div class="projects-category">
+      <h3 class="category-title">Gaming Interests</h3>
+      <p class="section-intro">Video games are another passion of mine, particularly team/strategic games.</p>
+      
+      <div class="interests-list">
+        <div class="interest-item">
+          <div class="interest-icon gaming-icon"></div>
+          <div class="interest-content">
+            <h4>Team-Based Games</h4>
+            <p>I enjoy collaborative games that require teamwork and strategy.</p>
+          </div>
+        </div>
+        <div class="interest-item">
+          <div class="interest-icon strategy-icon"></div>
+          <div class="interest-content">
+            <h4>Strategic Gaming</h4>
+            <p>Games that challenge my strategic thinking and problem-solving skills.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

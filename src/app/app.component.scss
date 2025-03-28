@@ -1,0 +1,190 @@
+:host {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  
+  // Enhanced background with gradient
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at top right, rgba(67, 97, 238, 0.07), transparent 70%),
+                radial-gradient(ellipse at bottom left, rgba(58, 12, 163, 0.05), transparent 70%);
+    z-index: -2;
+    pointer-events: none;
+  }
+}
+
+.main-content {
+  flex: 1;
+  padding: 1rem;
+  position: relative;
+  margin-top: 4rem; // Space for fixed header
+  margin-bottom: 2rem; // Space for footer
+  
+  // Improved background pattern
+  &::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(41, 121, 255, 0.03) 1px, transparent 1px),
+      radial-gradient(circle at 75% 75%, rgba(83, 109, 254, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+}
+
+.router-container {
+  position: relative;
+  min-height: calc(100vh - 7rem); // Adjust based on header/footer heights
+  
+  // Enhanced glow effect
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.05);
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  // Add subtle floating animation
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+// Floating particles background
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: float-particle 15s infinite linear;
+  
+  &:nth-child(2n) {
+    width: 8px;
+    height: 8px;
+    animation-duration: 20s;
+    background-color: var(--secondary-color);
+  }
+  
+  &:nth-child(3n) {
+    width: 4px;
+    height: 4px;
+    animation-duration: 25s;
+    animation-delay: 2s;
+  }
+  
+  &:nth-child(5n) {
+    width: 10px;
+    height: 10px;
+    opacity: 0.1;
+    animation-duration: 30s;
+    animation-delay: 5s;
+  }
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(100vh) translateX(0);
+  }
+  100% {
+    transform: translateY(-100px) translateX(100px);
+  }
+}
+
+.resume-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  
+  // Add a subtle entrance animation
+  animation: content-enter 0.6s var(--animation-timing);
+}
+
+@keyframes content-enter {
+  0% { 
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Disable blue highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Custom scrollbar matching theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .content {
+    padding: 1rem;
+  }
+}

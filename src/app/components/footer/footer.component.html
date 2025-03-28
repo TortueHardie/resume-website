@@ -1,0 +1,29 @@
+<footer class="footer">
+  <div class="container" @fadeInAnimation>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <a routerLink="/about" class="logo-link">{{ resumeData?.basics?.name || 'Colin LIENARD' }}</a>
+        <p class="footer-subtitle">{{ currentYear }} © All Rights Reserved</p>
+      </div>
+
+      <nav class="footer-nav">
+        <ul class="footer-menu">
+          <li *ngFor="let item of navItems" class="footer-item">
+            <a [routerLink]="item.path" routerLinkActive="active" class="footer-link">
+              {{ item.label }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="copyright">This resume website was created with Angular and features modern animations and responsive design.</p>
+      <p class="update-date">Last updated: {{ lastUpdated | date:'MMMM d, y' }}</p>
+      
+      <div class="scroll-top" (click)="scrollToTop()" [class.visible]="showScrollTop" @fadeAnimation>
+        <span class="arrow-up"></span>
+      </div>
+    </div>
+  </div>
+</footer>

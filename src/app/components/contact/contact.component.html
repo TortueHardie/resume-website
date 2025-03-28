@@ -1,0 +1,56 @@
+<section class="contact-section">
+  <h2 class="section-title">Contact Me</h2>
+  
+  <div class="contact-container">
+    <div class="contact-info">
+      <h3>Let's Connect</h3>
+      <p>Feel free to reach out if you're interested in my profile for an internship opportunity or if you have any questions.</p>
+      
+      <div class="contact-methods">
+        <div class="contact-method">
+          <div class="method-icon email-icon"></div>
+          <div class="method-details">
+            <h4>Email</h4>
+            <a [href]="'mailto:' + (resumeData?.basics?.email || 'your.email@example.com')">
+              {{ resumeData?.basics?.email || 'your.email@example.com' }}
+            </a>
+          </div>
+        </div>
+        
+        <div class="contact-method">
+          <div class="method-icon phone-icon"></div>
+          <div class="method-details">
+            <h4>Phone</h4>
+            <a [href]="'tel:' + (resumeData?.basics?.phone || '+1234567890')">
+              {{ resumeData?.basics?.phone || '(123) 456-7890' }}
+            </a>
+          </div>
+        </div>
+        
+        <div class="contact-method">
+          <div class="method-icon location-icon"></div>
+          <div class="method-details">
+            <h4>Location</h4>
+            <p>{{ getLocation() }}</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="social-profiles">
+        <h4>Find me on</h4>
+        <div class="social-links">
+          @for (profile of resumeData?.basics?.profiles || []; track profile.network) {
+            <a [href]="profile.url" target="_blank" rel="noopener" class="social-link">
+              {{ profile.network }}
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+    
+    <div class="availability-info">
+      <h3>Availability</h3>
+      <p class="availability-highlight">{{ resumeData?.basics?.summary || 'Currently seeking opportunities.' }}</p>
+    </div>
+  </div>
+</section>

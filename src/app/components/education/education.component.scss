@@ -1,0 +1,144 @@
+.education-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.75rem;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+  }
+}
+
+.education-timeline {
+  position: relative;
+  padding-left: 2rem;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 7px;
+    height: 100%;
+    width: 2px;
+    background-color: var(--light-gray);
+  }
+}
+
+.education-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.timeline-marker {
+  position: absolute;
+  top: 0;
+  left: -2rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.education-content {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.institution {
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.date-range {
+  color: var(--light-text-color);
+  font-size: 0.95rem;
+}
+
+.degree-info {
+  margin-bottom: 1.25rem;
+}
+
+.degree {
+  font-size: 1.2rem;
+  margin: 0 0 0.25rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.field {
+  margin: 0;
+  color: var(--light-text-color);
+  font-size: 1rem;
+}
+
+.courses {
+  margin-top: 1rem;
+}
+
+.courses-title {
+  font-size: 1.1rem;
+  margin: 0 0 0.75rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.courses ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.courses li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  .education-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .education-timeline {
+    padding-left: 1.5rem;
+  }
+  
+  .timeline-marker {
+    left: -1.5rem;
+  }
+}

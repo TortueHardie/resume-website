@@ -6,10 +6,21 @@
 /out-tsc
 /bazel-out
 
+# Angular specific
+/.angular/
+*.js.map
+/e2e/*.js
+/e2e/*.map
+
 # Node
 /node_modules
 npm-debug.log
 yarn-error.log
+yarn-debug.log
+.npm
+.pnp
+.pnp.js
+package-lock.json
 
 # IDEs and editors
 .idea/
@@ -19,6 +30,12 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+*.sublime-project
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # Visual Studio Code
 .vscode/*
@@ -36,7 +53,31 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+.env
+.env.*
+!.env.example
+*.log
+.fusion/
+
+# Build artifacts
+.DS_STORE
 
 # System files
 .DS_Store
 Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Temporary files
+*.tmp
+*.bak
+*~
+.temp/
+
+# Local development files
+*.local
+*.development
+
+# The thumbnails and index.json should be tracked in git since they're part of the app
+# If you want to regenerate them, use the scripts in package.json

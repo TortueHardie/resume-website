@@ -1,0 +1,27 @@
+<section class="experience-section">
+  <h2 class="section-title" @fadeInAnimation>Professional Experiences</h2>
+  
+  <div class="timeline" *ngIf="animationState" [@listAnimation]="resumeData?.experience?.length">
+    <div class="timeline-item" *ngFor="let exp of resumeData?.experience || []">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content hover-lift">
+        <div class="experience-header">
+          <h3 class="company-name">{{ exp.company }}</h3>
+          <span class="date-range">{{ exp.startDate }} - {{ exp.endDate }}</span>
+        </div>
+        <h4 class="position">{{ exp.position }}</h4>
+        <p class="summary">{{ exp.summary }}</p>
+        
+        <div class="highlights" *ngIf="exp.highlights && exp.highlights.length > 0">
+          <ul>
+            <li *ngFor="let highlight of exp.highlights">{{ highlight }}</li>
+          </ul>
+        </div>
+        
+        <a *ngIf="exp.website" [href]="exp.website" target="_blank" rel="noopener" class="company-link hover-effect">
+          Visit Company Website
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

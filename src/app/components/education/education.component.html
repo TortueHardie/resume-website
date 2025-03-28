@@ -1,0 +1,33 @@
+<section class="education-section">
+  <h2 class="section-title">Education</h2>
+  
+  <div class="education-timeline">
+    @for (edu of resumeData?.education || []; track edu.institution) {
+      <div class="education-item">
+        <div class="timeline-marker"></div>
+        <div class="education-content">
+          <div class="education-header">
+            <h3 class="institution">{{ edu.institution }}</h3>
+            <span class="date-range">{{ edu.startDate }} - {{ edu.endDate }}</span>
+          </div>
+          
+          <div class="degree-info">
+            <h4 class="degree">{{ edu.studyType }}</h4>
+            <p class="field">{{ edu.area }}</p>
+          </div>
+          
+          @if (edu.courses && edu.courses.length > 0) {
+            <div class="courses">
+              <h5 class="courses-title">Courses & Details</h5>
+              <ul>
+                @for (course of edu.courses; track course) {
+                  <li>{{ course }}</li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

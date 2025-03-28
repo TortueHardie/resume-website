@@ -1,0 +1,74 @@
+<section class="about-section">
+  <!-- Hero Section -->
+  <div class="hero-section" @fadeInAnimation>
+    <h1 class="typing-text">
+      <span class="greeting">Hello, I'm</span>
+      <span class="name-highlight">
+        {{ !nameTypingComplete ? displayName : resumeData?.basics?.name || 'Your Name' }}
+      </span>
+    </h1>
+    <p class="hero-subtitle">{{ resumeData?.basics?.label || 'Your Profession' }}</p>
+    <div class="hero-cta">
+      <a routerLink="/contact" class="btn primary">Get in touch</a>
+      <a routerLink="/projects" class="btn secondary">View my work</a>
+    </div>
+  </div>
+
+  <!-- Profile Section -->
+  <div class="profile-container glass-card" @fadeInAnimation [style.animation-delay]="'200ms'">
+    <div class="profile-image-wrapper" @slideAnimation>
+      <div class="profile-image" *ngIf="resumeData?.basics?.image">
+        <img [src]="resumeData?.basics?.image" alt="Profile photo">
+      </div>
+      <div class="profile-frame"></div>
+    </div>
+    
+    <div class="profile-info" @slideAnimation [style.animation-delay]="'200ms'">
+      <h2 class="section-title">About Me</h2>
+      
+      <div class="contact-details">
+        <div class="contact-item">
+          <i class="contact-icon email-icon"></i>
+          <span class="contact-text">{{ resumeData?.basics?.email }}</span>
+        </div>
+        <div class="contact-item">
+          <i class="contact-icon phone-icon"></i>
+          <span class="contact-text">{{ resumeData?.basics?.phone }}</span>
+        </div>
+        <div class="contact-item">
+          <i class="contact-icon location-icon"></i>
+          <span class="contact-text">{{ getLocation() }}</span>
+        </div>
+      </div>
+      
+      <div class="social-links">
+        <a *ngFor="let profile of resumeData?.basics?.profiles" 
+          [href]="profile.url" 
+          target="_blank" 
+          rel="noopener" 
+          class="social-link hover-scale"
+          [attr.aria-label]="profile.network">
+          {{ profile.network }}
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Skills Preview -->
+  <div class="skills-preview" @fadeInAnimation [style.animation-delay]="'400ms'">
+    <h2 class="section-title">Top Skills</h2>
+    <div class="skill-badges">
+      <div class="skill-badge" *ngFor="let skill of topSkills">
+        {{ skill }}
+      </div>
+    </div>
+  </div>
+  
+  <!-- Availability Section -->
+  <div class="summary-container" @fadeInAnimation [style.animation-delay]="'500ms'">
+    <div class="availability-highlight" [@pulseAnimation]="'pulse'">
+      <h2 class="summary-title">Availability Status</h2>
+      <p class="summary-text">{{ resumeData?.basics?.summary }}</p>
+    </div>
+  </div>
+</section>

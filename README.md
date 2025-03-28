@@ -1,59 +1,91 @@
-# ResumeWebsite
+# Resume Website
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+A modern, dynamic resume website built with Angular showcasing professional experience, skills, education, and personal interests.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Responsive design for all devices
+- Dynamic content management
+- Interactive sections for experience, skills, education, and projects
+- Photography portfolio gallery
+- Personal interests showcase
 
-```bash
-ng serve
-```
+## Getting Started
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Prerequisites
 
-## Code scaffolding
+- Node.js (v14 or higher)
+- npm (v6 or higher)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Installation
 
 ```bash
-ng generate --help
+# Clone the repository
+git clone https://github.com/your-username/resume-website.git
+
+# Navigate to project directory
+cd resume-website
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm start
 ```
 
-## Building
+The application will be available at `http://localhost:4200/`.
 
-To build the project run:
+## Adding Your Photos
+
+The website includes a photography portfolio section where you can showcase your work. To add your photos:
+
+1. **Prepare your images**:
+   - Create full-size images for the lightbox view
+   - Create thumbnail versions (recommended size: 400x300px) for the gallery grid
+   
+2. **Add images to the project**:
+   - Place full-size photos in the `src/assets/images/photography/` directory
+   - Place thumbnails in the same directory with a `thumb-` prefix
+
+3. **Update the photos array**:
+   - Open `src/app/components/projects/projects.component.ts`
+   - Update the `photos` array with your own photos:
+
+```typescript
+this.photos = [
+  {
+    id: 1,
+    title: 'Your Photo Title',
+    description: 'Description of your photo',
+    thumbnailUrl: 'assets/images/photography/thumb-yourphoto.jpg',
+    url: 'assets/images/photography/yourphoto.jpg',
+    category: 'Your Category'
+  },
+  // Add more photos...
+];
+```
+
+## Customizing Your Resume
+
+To update your resume information:
+
+1. Open `src/app/services/resume.service.ts`
+2. Modify the `resumeDataSubject` object with your personal information
+
+## Building for Production
+
+To build the application for production:
 
 ```bash
-ng build
+npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Deployment
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+The production build can be deployed to any static hosting service like GitHub Pages, Netlify, or Vercel.
 
-```bash
-ng test
-```
+## License
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project is licensed under the MIT License - see the LICENSE file for details.

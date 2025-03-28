@@ -1,1 +1,199 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #4361ee; /* Modern blue */
+  --primary-glow: rgba(67, 97, 238, 0.3); /* Soft blue glow */
+  --secondary-color: #3a0ca3; /* Deep purple for accent */
+  --text-color: #2b2d42; /* Dark blue-gray for text */
+  --light-text-color: #6c757d; /* Medium gray text */
+  --background-color: #ffffff; /* Clean white background */
+  --surface-color: #f8f9fa; /* Very light gray for cards */
+  --light-gray: #e9ecef; /* Light gray */
+  --lightest-gray: #f8f9fa; /* Very light gray for subtle backgrounds */
+  --dark-gray: #adb5bd; /* Mid gray */
+  --accent-color: #4895ef; /* Light blue accent */
+  --success-color: #4cc9f0; /* Cyan */
+  --warning-color: #f72585; /* Bright pink */
+  --error-color: #e63946; /* Modern red */
+  
+  /* Animation Variables */
+  --animation-duration-fast: 200ms;
+  --animation-duration-normal: 300ms;
+  --animation-duration-slow: 500ms;
+  --animation-timing: cubic-bezier(0.16, 1, 0.3, 1); /* Modern easing */
+  --animation-scale: 0.97;
+  
+  /* Modern shadows */
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  --neon-box-shadow: 0 5px 15px var(--primary-glow);
+  --neon-text-shadow: 0 0 5px var(--primary-glow);
+  
+  /* Border radius */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 24px;
+}
+
+/* Modern scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Roboto', 'Segoe UI', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100%;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+body {
+  position: relative;
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, #f1f8ff, transparent 70%);
+    z-index: -1;
+    opacity: 0.5;
+  }
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.4s var(--animation-timing);
+}
+
+.slide-up {
+  animation: slideUp 0.5s var(--animation-timing);
+}
+
+.scale-in {
+  animation: scaleIn 0.4s var(--animation-timing);
+}
+
+.bounce {
+  animation: bounce 0.5s var(--animation-timing);
+}
+
+/* Hover animation classes */
+.hover-lift {
+  transition: transform 0.3s var(--animation-timing), box-shadow 0.3s var(--animation-timing);
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--hover-shadow);
+}
+
+.hover-scale {
+  transition: transform 0.3s var(--animation-timing), box-shadow 0.3s var(--animation-timing);
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+  box-shadow: var(--hover-shadow);
+}
+
+/* Modern text styles */
+.neon-text {
+  color: var(--primary-color);
+  text-shadow: var(--neon-text-shadow);
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(15px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(var(--animation-scale)); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes bounce {
+  0% { transform: scale(0.95); opacity: 0; }
+  50% { transform: scale(1.02); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Modern border styles */
+.neon-border {
+  border: 1px solid var(--primary-color);
+  box-shadow: var(--neon-box-shadow);
+  border-radius: var(--border-radius-md);
+}
+
+/* Modern glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--card-shadow);
+}
+
+/* Button styles */
+.btn {
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--border-radius-sm);
+  border: none;
+  font-weight: 500;
+  transition: all 0.3s var(--animation-timing);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(-100%) skewX(-15deg);
+    transition: transform 0.5s var(--animation-timing);
+  }
+  
+  &:hover:before {
+    transform: translateX(100%) skewX(-15deg);
+  }
+  
+  &.primary {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 4px 15px var(--primary-glow);
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px var(--primary-glow);
+    }
+  }
+}
